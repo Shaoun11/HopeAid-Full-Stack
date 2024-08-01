@@ -12,7 +12,7 @@ const Donation = () => {
 
     useEffect(() => {
         // Replace with your actual API endpoint
-        fetch('http://localhost:3000/api/donationCard')
+        fetch('http://localhost:3001/api/donationCard')
           .then(response => response.json())
           .then(responseData => {
             console.log('Fetched data:', responseData);
@@ -44,7 +44,7 @@ const Donation = () => {
             <div id='donation' className='max-w-7xl mt-10  mx-auto'>
                 {/* HoperAid Donation Section Text */}
                 <div className='lg:ml-0 md:ml-8 md:mr-8 ml-4 lg:mr-0 mr-4 md:flex justify-between'>
-                    <h1 className='lg:text-[40px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
+                    <h1 className='lg:text-[37px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
                         Explore The Numerous <span className='md:block '></span> Programmes
                     </h1>
                     <p className='mt-3 text-[#525252] font-medium text-[15px]'>

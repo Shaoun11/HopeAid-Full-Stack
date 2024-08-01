@@ -1,16 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BlogCard = ({data}) => {
-    const {title,Date,Image}=data;
+    const {title,Date,Image,_id}=data;
     return (
         <>
           {/* first card edit */}
           <div className="bg-[#FFF] lg:w-96 w-[330px] mx-auto rounded-3xl">
           <figure className="px-3 pt-3">
-              <img
+          <Link to={`/blogDetails/${_id}`}> 
+          <img
                   src={Image}
                   alt=""
-                  className="md:w-[360px] w-[326px] h-[251px] md:h-[251px] object-cover rounded-3xl" />
+                  className="md:w-[360px] w-[326px] h-[251px] md:h-[251px] object-cover rounded-3xl" /></Link>
           </figure>
           <div className="ml-4 mr-4">
               <p className='flex text-sm gap-1 mt-4 text-[#525252] font-normal '>
@@ -25,7 +27,9 @@ const BlogCard = ({data}) => {
                   </svg>
                   <span className='mt-[2px]'>{Date}</span>
               </p>
+              <Link to={`/blogDetails/${_id}`}>
               <p className='text-[18px] mb-5 font-semibold text-[#171717] mt-2'>{title}</p> 
+              </Link>
           </div>
       </div>
         </>

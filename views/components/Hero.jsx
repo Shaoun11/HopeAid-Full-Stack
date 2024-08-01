@@ -1,13 +1,14 @@
 import React from 'react';
 import hero_main_image from '../../public/Hero_Image/hero_main.jpeg'
+import { Link } from 'react-router-dom';
 const Hero = () => {
     return (
         // HoperAid hero section start
-        <div id='/' className='bg-[#FEF9F6] lg:min-h-[calc(100vh-78px)] '>
-            <div className='md:flex lg:gap-14 lg:pt-16 pt-11 2xl:ml-auto lg:ml-32 md:ml-0 ml-0 mx-auto max-w-7xl'>
+        <div id='/' className='bg-[#FEF9F6] min-h-[calc(100vh-78px)]'>
+            <div className='max-w-7xl 2xl:ml-auto 2xl:mr-auto md:flex lg:gap-14 lg:pt-16 pt-11 lg:ml-32 md:ml-0 ml-0 mx-auto '>
                 {/* HoperAid hero section text */}
                 <div className='lg:ml-0 ml-4 lg:mr-0 mr-4 '>
-                    <h1 className='lg:text-[54px] md:text-[30px] leading-tight text-[28px] font-semibold text-[#171717]'>
+                    <h1 className='lg:text-[50px] md:text-[30px] leading-tight text-[28px] font-semibold text-[#171717]'>
                         Empowering Lives, One <span className='md:block '></span> Donation at a Time<span className='md:block '></span> Hope in Action
                     </h1>
                     <p className='mt-4 text-[#525252] font-normal text-[15px]'>
@@ -15,10 +16,12 @@ const Hero = () => {
                     </p>
 
                     <div className='lg:mt-14 md:mt-7 mt-14'>
-                        <button className="bg-[#068278] hover:border-[#068278] hover:border text-[#FFF] hover:bg-[#FFF] btn rounded-3xl px-12 py-4 hover:text-[#068278] border-transparent">
+                        <Link to='/checkout'>
+                            <button className="bg-[#068278] hover:border-[#068278] hover:border text-[#FFF] hover:bg-[#FFF] btn rounded-3xl px-12 py-4 hover:text-[#068278] border-transparent">
 
-                            Donate Now
-                        </button>
+                                Donate Now
+                            </button>
+                        </Link>
                     </div>
                     <div className='md:flex gap-8 lg:pb-2 md:pb-5 pb-0 lg:mt-10 md:mt-4 mt-10'>
                         <div>
@@ -36,7 +39,7 @@ const Hero = () => {
                 {/* HoperAid hero section svg and Image*/}
                 <div>
                     <div className='lg:mr-0 lg:ml-8 md:ml-0 ml-0 lg:-mt-8 md:mt-0 mt-0 md:mr-8 mr-0'>
-                        <svg className='lg:ml-2 ml-[130px] lg:-mt-0 -mt-[130px] lg:w-[495px] lg:h-[319px] w-[225px] h-[195px] ' width="495" height="319" viewBox="0 0 495 319" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg className='backdrop-blur-none lg:relative absolute lg:ml-2 ml-[130px] lg:-mt-0 -mt-[130px] lg:w-[495px] lg:h-[319px] w-[225px] h-[195px] ' width="495" height="319" viewBox="0 0 495 319" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_bd_0_1)">
                                 <circle cx="80" cy="143" r="28" fill="url(#paint0_linear_0_1)" />
                                 <circle cx="80" cy="143" r="27.5" stroke="url(#paint1_linear_0_1)" />
@@ -65,7 +68,7 @@ const Hero = () => {
                             <path d="M333.663 49H330.995H333.663" stroke="#ED9039" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M351.489 40.5112L349.603 42.3973L351.489 40.5112" stroke="#ED9039" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M336.397 55.6028L334.511 57.4889L336.397 55.6028" stroke="#ED9039" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <defs className='lg:relative absolute '>
+                            <defs className=''>
                                 <filter id="filter0_bd_0_1" x="0" y="90" width="136" height="136" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                                     <feFlood flood-opacity="0" result="BackgroundImageFix" />
                                     <feGaussianBlur in="BackgroundImageFix" stdDeviation="10" />
@@ -100,16 +103,16 @@ const Hero = () => {
                                     <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_0_1" result="shape" />
                                 </filter>
                                 <linearGradient id="paint0_linear_0_1" x1="52" y1="115" x2="117.333" y2="174.439" gradientUnits="userSpaceOnUse">
-                                    <stop className='backdrop-blur-none lg:relative absolute ' stop-color="white" stop-opacity="0.8" />
-                                    <stop className='backdrop-blur-none lg:relative absolute ' offset="1" stop-color="white" stop-opacity="0.2" />
+                                    <stop stop-color="white" stop-opacity="0.8" />
+                                    <stop offset="1" stop-color="white" stop-opacity="0.2" />
                                 </linearGradient>
                                 <linearGradient id="paint1_linear_0_1" x1="56.9123" y1="117.947" x2="108" y2="171" gradientUnits="userSpaceOnUse">
                                     <stop stop-color="white" stop-opacity="0.8" />
                                     <stop offset="1" stop-color="white" stop-opacity="0.8" />
                                 </linearGradient>
                                 <linearGradient id="paint2_linear_0_1" x1="411" y1="208" x2="476.333" y2="267.439" gradientUnits="userSpaceOnUse">
-                                    <stop className='lg:relative absolute ' stop-color="white" stop-opacity="0.8" />
-                                    <stop className='lg:relative absolute ' offset="1" stop-color="white" stop-opacity="0.2" />
+                                    <stop stop-color="white" stop-opacity="0.8" />
+                                    <stop offset="1" stop-color="white" stop-opacity="0.2" />
                                 </linearGradient>
                                 <linearGradient id="paint3_linear_0_1" x1="415.912" y1="210.947" x2="467" y2="264" gradientUnits="userSpaceOnUse">
                                     <stop stop-color="white" stop-opacity="0.8" />
@@ -131,13 +134,13 @@ const Hero = () => {
                             <circle cx="234" cy="234" r="160.5" stroke="white" />
                             <circle cx="234" cy="234" r="233.5" stroke="white" />
                         </svg>
-                         {/* HoperAid hero section Image edit */}
+                        {/* HoperAid hero section Image edit */}
                         <div className='lg:-mt-[350px] md:mt-[100px] md:ml-[90px] -mt-[50px] lg:ml-2 ml-[90px] lg:pb-12 md:pb-5 pb-5 '>
                             <svg className='lg:w-[440px] lg:h-[440px] w-[277px] h-[277px]' width="440" height="440" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="220" cy="220" r="216" stroke="white" stroke-width="8" />
                             </svg>
 
-                            <img src={hero_main_image} className='lg:w-[424px] lg:h-[424px] w-[267px] h-[267px] object-cover rounded-full lg:-mt-[432px] -mt-[271px] ml-1 lg:ml-[8px] '></img>
+                            <img src={hero_main_image} className='lg:w-[424px] lg:h-[424px] w-[267px] h-[267px] object-cover rounded-full lg:-mt-[432px] -mt-[271px] ml-1 lg:ml-[8px] ' alt='hero home page banner'></img>
                         </div>
                     </div>
                 </div>

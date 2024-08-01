@@ -6,7 +6,7 @@ const Services = () => {
         <div className='max-w-7xl mt-16 mb-28 mx-auto'>
             {/* HoperAid Services Section text */}
             <div className='lg:ml-0 ml-4 lg:mr-0 mr-4'>
-                <h1 className='lg:text-[40px] md:text-[30px] text-center text-[24px] font-semibold text-[#171717]'>
+                <h1 className='lg:text-[37px] md:text-[30px] text-center text-[24px] font-semibold text-[#171717]'>
                     How You May Assist
                 </h1>
                 <p className='mt-3 text-[#525252] text-center font-medium text-[15px]'>

@@ -16,7 +16,7 @@ const Login = () => {
         const password = e.target.password.value;
         console.log(email, password);
         try {
-            const response = await fetch('http://localhost:3000/api/UserLogin', {
+            const response = await fetch('http://localhost:3001/api/UserLogin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ const Login = () => {
                     <div className="flex backdrop-blur-3xl bg-[#FEF9F6] rounded-xl border   overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
                         <div className="hidden lg:block lg:w-1/2 bg-cover"
                         >
-                            <img className='bg-indigo-100 h-[500px] w-[880px] object-cover ' src="https://static.vecteezy.com/system/resources/previews/016/900/444/non_2x/online-dating-app-login-illustration-valentine-s-day-love-match-mobile-leaves-gradient-character-illustration-vector.jpg" alt="" />
+                            <img className='bg-white h-[500px] w-[880px] object-cover ' src="https://i.ibb.co/R3GyTrY/Sign-in-rafiki.png" alt="" />
                         </div>
                         <div className="w-full p-8 lg:w-1/2 mt-4">
                             <h2 className="text-2xl font-semibold text-gray-700 text-center">Please Log in</h2>

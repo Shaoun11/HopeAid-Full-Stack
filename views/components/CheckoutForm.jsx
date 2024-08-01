@@ -1,9 +1,10 @@
-// src/pages/PaymentPage.jsx
 import React, { useEffect, useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import toast from 'react-hot-toast';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Loading from "../loader/loading.jsx";
+import Footer from './Footer.jsx';
+import Navbar from './Navbar.jsx';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -12,13 +13,23 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const [donationCard, setDonationCard] = useState(null);
-  const  navigate  = useNavigate();
+  const [donations, setTotalDonation] = useState(null);
+  const navigate = useNavigate();
+  const [date, setDate] = useState(new Date());
+
   useEffect(() => {
-    fetch(`http://localhost:3000/api/donationCard/${id}`)
+    fetch(`http://localhost:3001/api/donationCard/${id}`)
       .then(response => response.json())
       .then(data => setDonationCard(data))
       .catch(error => console.error('Error fetching donation card:', error));
   }, [id]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/api/donationCard")
+      .then(response => response.json())
+      .then(data => setTotalDonation(data))
+      .catch(error => console.error('Error fetching donation card:', error));
+  }, []);
 
   useEffect(() => {
     if (error) {
@@ -26,17 +37,23 @@ const CheckoutForm = () => {
     }
   }, [error]);
 
-  if (!donationCard) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    // Update the date every second
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+
+    // Clean up the timer on component unmount
+    return () => clearInterval(timer);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let amount = donationCard.Donate * 100; // Convert dollars to cents
+    let amount = donationCard?.Donate * 100 ||384; // Convert dollars to cents
     amount = Math.max(amount, 50);
     const email = e.target.email.value;
     const currency = e.target.currency.value;
-   
+
     setLoading(true);
     const cardElement = elements.getElement(CardElement);
 
@@ -45,17 +62,17 @@ const CheckoutForm = () => {
       card: cardElement,
     });
 
-    console.log(amount,currency,email,paymentMethod);
+    console.log(amount, currency, email, paymentMethod);
 
     if (error) {
       setError(error.message);
       setLoading(false);
     } else {
       // Send paymentMethod.id to your server for processing
-      const response = await fetch('http://localhost:3000/api/createpayment', {
+      const response = await fetch('http://localhost:3001/api/createpayment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ paymentMethodId:paymentMethod.id, amount,currency,email }),
+        body: JSON.stringify({ paymentMethodId: paymentMethod.id, amount, currency, email }),
       });
 
       if (response.ok) {
@@ -69,8 +86,14 @@ const CheckoutForm = () => {
     }
   };
 
+  if (!donationCard || !donations) {
+    return <div><Loading></Loading></div>;
+  }
+
   return (
-    <div className="relative mx-auto w-full bg-white">
+    <div>
+      <Navbar></Navbar>
+      <div className="relative mx-auto w-full bg-white">
       <div className="grid min-h-screen grid-cols-10">
         <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-6 lg:py-24">
           <div className="mx-auto w-full max-w-lg">
@@ -93,8 +116,9 @@ const CheckoutForm = () => {
               </div>
               <CardElement className="block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" />
               <div>
+
                 <p className="text-xs font-semibold text-gray-500">Select your Currency</p>
-                <div className="mr-6 flex flex-wrap">
+                <div className="mr-6 flex flex-wrap  mb-3">
                   <div className="my-1">
                     <label htmlFor="currency" className="sr-only">
                       Select currency
@@ -104,14 +128,22 @@ const CheckoutForm = () => {
                       id="currency"
                       className="cursor-pointer rounded border-gray-300 bg-gray-50 py-3 px-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
                     >
-                      <option value="BDT">BDT</option>
-                      <option value="USDT">USDT</option>
-                      <option value="EUR">EUR</option>
+                    <option  value="USD">USD</option>
+                    <option value="BDT">BDT</option>
+                    <option value="EUR">EUR</option>
                     </select>
                   </div>
                 </div>
               </div>
-              <p className="mt-10 text-center text-sm font-semibold text-gray-500">
+              <div className="flex justify-between items-center w-full">
+                          <p className="text-base  font-semibold leading-4 text-gray-500">
+                            Total Donate:
+                          </p>
+                          <p className="text-base  font-semibold leading-4 text-gray-600">
+                            ${donationCard?.Donate || 384}
+                          </p>
+                        </div>
+              <p className="mt-10  text-sm font-normal text-gray-500">
                 By placing this order you agree to the{' '}
                 <a href="#" className="whitespace-nowrap text-teal-400 underline hover:text-teal-600">
                   Terms and Conditions
@@ -131,33 +163,38 @@ const CheckoutForm = () => {
           <h2 className="sr-only">Donation summary</h2>
           <div>
             <img
-              src="https://images.unsplash.com/photo-1581318694548-0fb6e47fe59b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+              src="https://i.ibb.co/Fxrg4M8/donation-box-and-charity-concept-human-hands-putting-money-cash-love-and-heart-to-donation-box-toget.jpg"
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-teal-800 to-teal-400 opacity-95"></div>
+            <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-teal-800 to-teal-400 opacity-90 object-cover"></div>
           </div>
-          <div className="relative">
-            <ul className="space-y-5">
-              <li className="flex justify-between">
-                <div className="inline-flex">
-                  <img src={donationCard.img} alt="" className="max-h-16 object-cover rounded" />
-                  <div className="ml-3">
-                    <p className="text-base font-semibold text-white">{donationCard.title}</p>
-                    <p className="text-sm font-medium text-white text-opacity-80">{donationCard.Date}</p>
+          {donationCard ? (
+            <div className="relative">
+              <ul className="space-y-5">
+                <li className="flex justify-between">
+                  <div className="inline-flex">
+                    <img src={donationCard?.img || "https://i.ibb.co/Fxrg4M8/donation-box-and-charity-concept-human-hands-putting-money-cash-love-and-heart-to-donation-box-toget.jpg"} alt="" className="max-h-16 object-cover rounded" />
+                    <div className="ml-3">
+                      <p className="text-base font-semibold text-white">{donationCard?.title || "Every Contribution Counts Support Us in Your Own Way"}</p>
+                      <p className="text-sm font-medium text-white text-opacity-80">{donationCard?.Date || date.toLocaleString()}</p>
+                      <p className="text-sm font-semibold mt-1 text-white">${donationCard?.Donate ||384 }</p>
+                    </div>
                   </div>
-                </div>
-                <p className="text-sm font-semibold mt-1 text-red-600">${donationCard.Donate}</p>
-              </li>
-            </ul>
-            <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
-            <div className="space-y-2">
-              <p className="flex justify-between text-lg font-bold text-white">
-                <span>Total Donate:</span>
-                <span className="text-red-600">${donationCard.Donate}</span>
-              </p>
+
+                </li>
+              </ul>
+              <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
+              <div className="space-y-2">
+                <p className="flex justify-between text-lg font-bold text-white">
+                  <span>Donate:</span>
+                  <span className="text-white">${donationCard?.Donate || 384}</span>
+                </p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <p className="relative text-white">No donation data found.</p>
+          )}
           <div className="relative mt-10 lg:mt-[400px] text-white">
             <h3 className="mb-5 text-lg font-bold">Support</h3>
             <p className="text-sm font-semibold">
@@ -170,6 +207,8 @@ const CheckoutForm = () => {
           </div>
         </div>
       </div>
+    </div>
+    <Footer></Footer>
     </div>
   );
 };

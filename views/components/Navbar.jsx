@@ -51,20 +51,13 @@ const Navbar = () => {
 
   return (
     //Navbar code start
-    <div className=" sticky -top-1 bg-opacity-50   backdrop-blur-3xl   lg:h-[80px] w-full  h-auto   bg-[#fef9f6]  ">
+    <div className=" sticky -top-1 bg-opacity-50 z-10  backdrop-blur-3xl   lg:h-[80px] w-full  h-auto   bg-[#fef9f6]  ">
     <div className="max-w-7xl mx-auto ">
       <nav className="px-6 py-3 flex lg:flex-row justify-between items-center">
         <div className="flex items-center ">
-          <Link to="/" offset={-90}  smooth={true} className=" font-bold">
+          <a href="/" className=" font-bold">
           <h2 className='text-[#18233B] cursor-pointer invisible lg:visible md:text-2xl text-xl font-medium'>Hope<span class='text-[#068278]'>Aid</span> </h2>
-          </Link>
-
-          {/* <div className=" lg:invisible visible" >
-                  <button className="bg-[#FFF] border-[#068278] border text-[#068278] hover:bg-[#068278] btn rounded-3xl px-7 py-2 hover:text-white hover:border-0">
-                   
-                  Signup
-                  </button>
-                </div> */}
+          </a>
         </div>
          {/* lg: device navbar    */}
         <ul className="hidden cursor-pointer lg:flex justify-between items-center gap-8 text-base text-[#18233B] font-normal ">
@@ -139,12 +132,12 @@ const Navbar = () => {
                 }`}
             >
                  <li>
-            <Link to='/' smooth={true} offset={-90} 
+            <a href='/' smooth={true} offset={-90} 
               className={`hover:text-[#068278] active:text-[#068278] ${activeLink === 'home' ? 'clicked' : ''}`}
              onClick={() => handleClick('home')}
             >
               Home
-            </Link>
+            </a>
           </li>
          
           <li>

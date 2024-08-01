@@ -33,7 +33,7 @@ const Register = () => {
                 Name, Password, EmailAddress, Image
             };
             // Send registration request
-            const response = await fetch('http://localhost:3000/api/CreateProfile', {
+            const response = await fetch('http://localhost:3001/api/CreateProfile', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -130,7 +130,7 @@ const Register = () => {
                                             success && <h1 className='font-semibold text-green-500 ml-20'>{success}</h1>
                                         }
                                     </form>
-                                    <h4 className="mt-6 text-xs text-gray-600 text-center" >Alreadr,you have account please  <span className='text-red-500 font-semibold'> <NavLink to={"/login"} >Log in</NavLink></span>  </h4>
+                                    <h4 className="mt-6 text-xs text-gray-600 text-center" >Alreadr,you have account please  <span className='text-red-500 font-semibold'> <NavLink to={"/signin"} >Log in</NavLink></span>  </h4>
                                     <p className="mt-6 text-xs text-gray-600 text-center">
                                         I agree to abide by templatana's
                                         <a href="#" className="border-b border-gray-500 border-dotted">
@@ -148,7 +148,7 @@ const Register = () => {
                     <div className="flex-1 bg-[#FEF9F6] text-center hidden lg:flex">
                         <div className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
                         >
-                            <img className=' lg:mt-20 ' src="https:/cdni.iconscout.com/illustration/premium/thumb/online-user-sign-up-4489365-3723272.png" alt="" />
+                            <img className=' lg:mt-10 ' src="https://i.ibb.co/7rjVxbY/Mobile-login-pana.png" alt="" />
                         </div>
                     </div>
                 </div>

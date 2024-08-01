@@ -6,6 +6,9 @@ import Register from '../views/components/Register.jsx';
 import PaymentPage from '../views/pages/PaymentPage.jsx';
 import PrivateRoute from '../views/pages/PrivateRoute.jsx';
 import Success from '../views/components/Success.jsx';
+import BlogDetails from "../views/components/BlogDetails.jsx";
+import HelpContact from "../views/components/HelpContact.jsx";
+
 
 const Web = () => {
     return (
@@ -16,7 +19,9 @@ const Web = () => {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/paymentSuccess" element={<Success/>}/>
                 <Route path="/checkout/:id" element={<PrivateRoute><PaymentPage/></PrivateRoute>}/>
-                
+                <Route path="/blogDetails/:id" element={<PrivateRoute><BlogDetails/></PrivateRoute>}/>
+                <Route path="/checkout" element={<PrivateRoute><PaymentPage/></PrivateRoute>}/>
+                <Route path="/help&Support" element={<HelpContact/>}/>
             </Routes>
         </BrowserRouter>
     );

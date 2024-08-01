@@ -12,7 +12,7 @@ const Blog = () => {
 
     useEffect(() => {
         // Replace with your actual API endpoint
-        fetch('http://localhost:3000/api/donationBlogData')
+        fetch('http://localhost:3001/api/donationBlogData')
           .then(response => response.json())
           .then(responseData => {
             const dataArray = responseData.data;// Directly access the data array
@@ -38,7 +38,7 @@ const Blog = () => {
             <div id='blog' className='max-w-7xl mx-auto mt-[60px] mb-[60px]'>
                 {/* HoperAid Blog Section Text */}
                  <div className='lg:ml-0 md:ml-6 md:mr-6 ml-4 lg:mr-0 mr-4 md:flex flex justify-between'>
-                    <h1 className='lg:text-[40px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
+                    <h1 className='lg:text-[37px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
                     Press Release
                     </h1>
                     {/* blog section button*/}

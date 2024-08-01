@@ -3,11 +3,12 @@ import features_image from '../../public/Features_Image/f8826ec72e0d66bd359a4b8f
 const Features = () => {
     return (
         // HoperAid Features Section Code Start
-        <div id='features' className='max-w-7xl mx-auto  lg:ml-40 2xl:ml-[680px] md:ml-6 md:mr-6 ml-0  pt-[60px] flex md:flex-row flex-col-reverse lg:gap-28 gap-16'>
+        <div id='features' className='max-w-7xl  mx-auto'>
+            <div className='lg:ml-16 md:ml-6 md:mr-6 ml-auto pt-[60px] flex md:flex-row flex-col-reverse lg:gap-28 gap-16'>
             <div>
             {/* HoperAid Donation Section Text */}
                 <div className='lg:ml-0  ml-4 lg:mr-0 mr-4 '>
-                    <h1 className='lg:text-[40px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
+                    <h1 className='lg:text-[37px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
                         Our Contribution Will Be <span className='md:block '></span> of Immediate Use
                     </h1>
                     <div className='flex lg:gap-5 gap-4 mt-12'>
@@ -20,7 +21,7 @@ const Features = () => {
 
                         </p>
                         <div>
-                            <p className='lg:text-[22px] text-[18px] text-[#171717] font-medium'>
+                            <p className='lg:text-[20px] text-[18px] text-[#171717] font-medium'>
                                 Education for Everyone
                             </p>
                             <p className='lg:text-[15px] text-sm text-[#525252] font-normal '>
@@ -43,7 +44,7 @@ const Features = () => {
 
                         </p>
                         <div>
-                            <p className='lg:text-[22px] text-[18px] text-[#171717] font-medium'>
+                            <p className='lg:text-[20px] text-[18px] text-[#171717] font-medium'>
                                 Initiatives for Health and Well-Being
                             </p>
                             <p className='lg:text-[15px] text-sm text-[#525252] font-normal '>
@@ -69,7 +70,7 @@ const Features = () => {
 
                         </p>
                         <div>
-                            <p className='lg:text-[22px] text-[18px] text-[#171717] font-medium'>
+                            <p className='lg:text-[20px] text-[18px] text-[#171717] font-medium'>
                             Resilient Employment
                             </p>
                             <p className='lg:text-[15px] text-sm text-[#525252] font-normal '>
@@ -82,6 +83,7 @@ const Features = () => {
             {/* HoperAid Donation Section Image  */}
             <div className='lg:mt-4 md:mt-20 mt-4'>
            <img className='lg:w-[471px] lg:h-[512px] w-[350px] h-[380px] object-cover rounded-3xl mx-auto' src={features_image} alt='features_image' />
+            </div>
             </div>
         </div>
         // HoperAid Donation Section Code End

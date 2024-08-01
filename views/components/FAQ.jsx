@@ -3,9 +3,9 @@ import React from 'react';
 const FAQ = () => {
     return (
         // FAQ Code Start
-        <div className='max-w-7xl 2xl:ml-[650px] lg:ml-32 lg:mr-32 md:ml-6 md:mr-6 ml-0 mx-auto mb-[60px]'>
+        <div className='max-w-7xl 2xl:ml-auto 2xl:mr-auto lg:ml-32 lg:mr-32 md:ml-6 md:mr-6 ml-0 mx-auto pt-[20px] pb-[60px]'>
              <div className='lg:ml-4 ml-4 lg:mr-0 mr-4'>
-                <h1 className='lg:text-[40px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
+                <h1 className='lg:text-[37px] md:text-[30px] text-[24px] font-semibold text-[#171717]'>
                 Frequently Asked Questions
                 </h1>
                 <p className='mt-3 text-[#525252] font-medium text-[15px]'>

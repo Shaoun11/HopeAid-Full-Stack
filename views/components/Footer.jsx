@@ -6,6 +6,7 @@ import React from 'react';
 import google_play_image from '../../public/Footer_Image/Google Play.svg'
 import apple_play_image from '../../public/Footer_Image/Play Store.svg'
 import codecanyon_logo from '../../public/Footer_Image/DevGenius-codecanyon-logo.svg'
+import {Link} from "react-scroll/modules";
 
 const Footer = () => {
     return (
@@ -32,10 +33,11 @@ const Footer = () => {
                                 Menu
                             </p>
                             <nav className="flex flex-col mt-4 space-y-2  text-sm text-[#525252] font-normal">
-                                <a className="hover:opacity-75" href> Donation</a>
-                                <a className="hover:opacity-75" href> Features</a>
-                                <a className="hover:opacity-75" href> Volunteer</a>
-                                <a className="hover:opacity-75" href> Blog</a>
+                            npm r
+                                <Link to='donation'  smooth={true} offset={-90} className="hover:opacity-75" > Donation</Link>
+                                <Link to='features'  smooth={true} offset={-90} className="hover:opacity-75" > Features</Link>
+                                <Link to='volunteer'  smooth={true} offset={-90} className="hover:opacity-75" > Volunteer</Link>
+                                <Link to='blog'  smooth={true} offset={-90} className="hover:opacity-75" > Blog</Link>
 
                             </nav>
                         </div>
@@ -58,9 +60,10 @@ const Footer = () => {
                                 About Us
                             </p>
                             <nav className="flex flex-col mt-4 space-y-2  text-sm text-[#525252] font-normal">
-                                <a className="hover:opacity-75" href=''> Contact Us</a>
+                         
+                                
+                                <a className="hover:opacity-75" href='/help&Support'> Help & Support</a>
                                 <a className="hover:opacity-75" href=''> FAQ</a>
-                                <a className="hover:opacity-75" href=''> Help & Support</a>
                             </nav>
                         </div>
                         <div className='lg:mt-0 md:mt-0 mt-6 lg:col-span-1 md:col-span-1 col-span-3'>
